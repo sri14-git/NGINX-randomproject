@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag nodeapp:$(date +%s)
     - name: login to docker hub
-      run: echo ${{DOCKER_ACCESS}} | docker login -u ${{DOCKER_USER}} --password-stdin 
+      run: echo ${{secrets.DOCKER_ACCESS}} | docker login -u ${{secrets.DOCKER_USER}} --password-stdin 
     - name: push to docker 
       run: docker push nodeapp:$(date +%s)
