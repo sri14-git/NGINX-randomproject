@@ -15,10 +15,10 @@ spec:
         name:  node-app
     spec:
       containers:
-      - image:  sri14docker/nodeapp:main-411202b
+      - image:  sri14docker/nodeapp:main-3d53bbb
         name:  node-app    
         ports:
-        - containerPort: 3000
+        - containerPort: 3001
 ---
 kind: Service
 apiVersion: v1
