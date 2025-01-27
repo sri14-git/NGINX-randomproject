@@ -14,9 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag nodeapp:$(date +%s)
-    - name: login to docker hub
-      run: echo ${{secrets.DOCKER_ACCESS}} | docker login -u ${{secrets.DOCKER_USER}} --password-stdin 
-    - name: push to docker 
-      run: docker push nodeapp:$(date +%s)
+    - uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+        image: sri14docker/nodeapp
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
