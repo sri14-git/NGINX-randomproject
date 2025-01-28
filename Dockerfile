@@ -1,6 +1,10 @@
-FROM node:23-alpine3.20
+FROM node:18
+# Set the working directory
 WORKDIR /app
-COPY . /app
+# Copying package.json and package-lock.json
+COPY package*.json ./
+RUN npm install
+COPY . .
+# Expose the port
 EXPOSE 3001
-RUN npm install express
 CMD ["node", "server.js"]
